@@ -4,7 +4,7 @@ const bodyParser = require('body-parser')
 const helmet = require('helmet')
 const path = require('path')
 const dotenv = require('dotenv').config()
-
+const db = require('./app/database/connection');
 
 //port initializer 
 const port = process.env.PORT || 3000
@@ -19,6 +19,7 @@ app.use('/public', express.static(path.join(__dirname, 'public')));
 //middlewares 
 app.use(helmet())
 app.use(bodyParser.urlencoded({ extended: false }))
+// app.use()
 
 //routes
 app.use(require('./app/routes/index'))

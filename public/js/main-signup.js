@@ -23,6 +23,8 @@ $(()=>{
     }, 500)   
     } else {
       alertify.error('Passwords must match');
+      document.getElementById('pass').value = '';
+      document.getElementById('conf-pass').value = '';
     } 
   })
 });
