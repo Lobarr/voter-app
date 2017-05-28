@@ -1,0 +1,28 @@
+{
+  "name": "voter-app",
+  "version": "1.0.0",
+  "description": "This is a polling app tha allows users create polls and show the results",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Lobarr/voter-app"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Lobarr",
+    "email": "jesulobaegunjobi@hotmail.com",
+    "url": "lobarr.github.io/portfolio"
+  },
+  "license": "ISC",
+  "engines": {
+    "node": "*"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "path": "^0.12.7"
+  }
+}
