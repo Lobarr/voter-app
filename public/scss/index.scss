@@ -1,0 +1,68 @@
+@media only screen  and (min-width : 1024px) {
+  .header {
+    background-color: rgb(166,128,140);
+    .header-children {
+      padding: 7em;
+      color: white;
+      text-align: center;
+      h1 {
+        font-size: 6em;
+      }
+      p {
+        font-size: 2.5em;
+      }
+    }
+  }
+}//laptop
+
+@media only screen and (min-width : 320px) and (max-width : 480px){
+  .header {
+    background-color: rgb(166,128,140);
+    height: 100%;
+    .header-children {
+      padding: 7em;
+      color: white;
+      text-align: center;
+      h1 {
+        font-size: 6em;
+      }
+      p {
+        font-size: 2.5em;
+      }
+    }
+  }
+}//iphone
+
+@media only screen and (min-width : 480px) and (max-width : 1024px) and (orientation: landscape){
+  .header {
+    background-color: rgb(166,128,140);
+    .header-children {
+      padding: 7em;
+      color: white;
+      text-align: center;
+      h1 {
+        font-size: 6em;
+      }
+      p {
+        font-size: 2.5em;
+      }
+    }
+  }
+}//ipad
+
+@media only screen and (min-width : 480px) and (max-width : 1024px) and (orientation: portrait){
+  .header {
+    background-color: rgb(166,128,140);
+    .header-children {
+      padding: 7em;
+      color: white;
+      text-align: center;
+      h1 {
+        font-size: 6em;
+      }
+      p {
+        font-size: 2.5em;
+      }
+    }
+  }
+}//ipad

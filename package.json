@@ -8,7 +8,8 @@
     "url": "https://github.com/Lobarr/voter-app"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha || true",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": {
@@ -18,11 +19,30 @@
   },
   "license": "ISC",
   "engines": {
-    "node": "*"
+    "node": "^6.9.5"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.17.2",
+    "chai": "^4.0.0",
+    "dotenv": "^4.0.0",
+    "ejs": "^2.5.6",
     "express": "^4.15.3",
+    "express-session": "^1.15.3",
+    "helmet": "^3.6.1",
+    "mocha": "^3.4.2",
+    "mongoose": "^4.10.3",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
     "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.18.12",
+    "gulp": "^3.9.1",
+    "gulp-csso": "^3.0.0",
+    "gulp-nodemon": "^2.2.1",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0"
   }
 }
