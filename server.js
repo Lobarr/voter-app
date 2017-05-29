@@ -8,7 +8,6 @@ const cookieParser = require('cookie-parser')
 const session = require('express-session')
 const db = require('./app/database/connection')
 const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy
 
 //port initializer 
 const port = process.env.PORT || 3000
@@ -25,7 +24,9 @@ app.use(helmet())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser());
 app.use(session({
-  secret: 'pollerAppSecret'
+  secret: 'pollerAppSecret',
+  resave: true,
+  saveUninitialized: true
 }))
 app.use(passport.initialize())
 app.use(passport.session())

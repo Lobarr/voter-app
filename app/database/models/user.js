@@ -33,7 +33,7 @@ module.exports.createUser = (newUser, callback)=>{
   });
 }
 
-module.exports.validatePassword = (inputPass, userPass) => {
+module.exports.validatePassword = (inputPass, userPass) =>{
   bcrypt.compare(inputPass, userPass, (err, isMatch) => {
     if (err) throw err;
     if(isMatch){
@@ -44,9 +44,3 @@ module.exports.validatePassword = (inputPass, userPass) => {
   })
 }
 
-module.exports.validateUser = (inputUsername) => {
-  UserModel.findOne({username: inputUsername}, (err, user)=>{
-    return user;
-  })
-}
-    

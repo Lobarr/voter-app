@@ -15,12 +15,18 @@ $(()=>{
           username: username,
           password: password      
         },
-        dataType: "json"
-    })
-    alertify.success('User Registered'); 
-    setTimeout(()=>{
-      window.location.href = '/login';
-    }, 500)   
+        dataType: "json",
+        success: (data) => {
+          if(data.message){
+            alertify.error(data.message);            
+          }else{
+            alertify.success('User Registered'); 
+            setTimeout(()=>{
+              window.location.href = '/login';
+            }, 500)   
+          }
+        }
+    })    
     } else {
       alertify.error('Passwords must match');
       document.getElementById('pass').value = '';

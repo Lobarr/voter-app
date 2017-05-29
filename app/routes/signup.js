@@ -12,7 +12,16 @@ router.post('/signup', (req, res)=>{
     password: req.body.password
   })
   UserModel.createUser(_newUser, (err, user)=>{
-    if(err) throw err;
+    console.log(err);
+    if (err !== null){
+      res.send({
+        message: "Username taken"
+      })
+    }else {
+      res.send({
+        redirect: '/login'
+      })
+    }
     console.log(user);
   })
 })
