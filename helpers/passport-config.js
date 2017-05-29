@@ -7,7 +7,6 @@ function isValidPassword(user, password){
 }
 
 module.exports = (passport) => {
-  console.log("inside password config file")
   passport.serializeUser((user, done) => {
     done(null, user.id);
   });
@@ -22,9 +21,14 @@ passport.use(new LocalStrategy(
   function(username, password, done) {
     UserModel.findOne({ username: username }, function (err, user) {
       if (err) { return done(err); }
-      if (!user) { return done(null, false, {message: "Invalid user"}); }
-      if (!validatePassword(password, user.password)) { return done(null, false, {message: 'Invalid Password'}); }
-      return done(null, user);
+      if (!user) { console.log('Invalid user'); return done(null, false, {message: "Invalid user"}); }
+      if (validatePassword(password, user.password) === false) {
+         console.log('Invalid password');
+          return done(null, false, {message: 'Invalid Password'});
+      }else {
+        console.log("Signed in")
+        return done(null, user);
+      }      
     });
   }
 ));

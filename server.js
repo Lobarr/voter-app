@@ -26,7 +26,8 @@ app.use(cookieParser());
 app.use(session({
   secret: 'pollerAppSecret',
   resave: true,
-  saveUninitialized: true
+  saveUninitialized: true,
+  cookie: {secure: true}
 }))
 app.use(passport.initialize())
 app.use(passport.session())
