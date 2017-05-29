@@ -45,6 +45,12 @@
     </div>
     <div class="container" id="cont">
         <h1 class="text-center" id="header">Login</h1>
+        <div class="error">
+          <% if (error_msg) { %>
+            <span id="error_msg"><%= error_msg %></span>
+          <% } %>
+        </div>
+        <span id="test" style="display: none">motherfucker</span>
         <form method="POST" action="/login">
           <div class="form-group">
             <input type="text" class="form-control" id="username" placeholder="Username" required autofocus>

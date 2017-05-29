@@ -17,19 +17,20 @@ module.exports = (passport) => {
     });
   });
 
-passport.use(new LocalStrategy(
-  function(username, password, done) {
-    UserModel.findOne({ username: username }, function (err, user) {
-      if (err) { return done(err); }
-      if (!user) { console.log('Invalid user'); return done(null, false, {message: "Invalid user"}); }
-      if (validatePassword(password, user.password) === false) {
-         console.log('Invalid password');
-          return done(null, false, {message: 'Invalid Password'});
-      }else {
-        console.log("Signed in")
-        return done(null, user);
-      }      
-    });
-  }
-));
+  passport.use('local',new LocalStrategy(    
+    function(username, password, done) {
+      console.log('inside passport');
+      UserModel.findOne({ username: username }, function (err, user) {
+        if (err) { return done(err); }
+        if (!user) { console.log('Invalid user'); return done(null, false, req.flash('error_msg', "Invalid user"))}
+        if (validatePassword(password, user.password) === false) {
+          console.log('Invalid password');
+            return done(null, false, req.flash("error_msg", 'Invalid Password'))
+        }else {
+          console.log("Signed in")
+          return done(null, user);
+        }      
+      });
+    }
+  ));
 }

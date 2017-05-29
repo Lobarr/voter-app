@@ -18,7 +18,11 @@ $(()=>{
         dataType: "json",
         success: (data) => {
           if(data.message){
-            alertify.error(data.message);            
+            alertify.error(data.message); 
+            document.getElementById('username').value = '';
+            document.getElementById('pass').value = '';
+            document.getElementById('conf-pass').value = '';
+            document.getElementById('username').focus()
           }else{
             alertify.success('User Registered'); 
             setTimeout(()=>{

@@ -1,8 +1,13 @@
 const router = require('express').Router();
 
-router.get('/user/:username', (req, res) => {
+function isLoggedIn(req, res, next){
+  if(req.isAuthenticated()) return next();
+  res.redirect('/login');
+}
+
+router.get('/user/:username', isLoggedIn, (req, res) => {
   res.render('user', {
-    username: req.params.username
+    username: req.user
   });
 });
 

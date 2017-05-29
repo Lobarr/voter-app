@@ -5,15 +5,16 @@ const _helperPassport = require('../../helpers/passport-config')
 const UserModel = require('../database/models/user')
 
 router.get('/login', (req, res) => {
-  res.render('login');
+  res.render('login', {error_msg: req.flash('error_msg')});
 })
 
 _helperPassport(passport);
 
 router.post('/login', passport.authenticate('local', 
   { 
+    successRedirect: '/',
     failureRedirect: '/login',
-    failureFlash: false
+    failureFlash: true
   }), (req, res) => {
   console.log('login submitted')
   res.render('user', {user: req.body.username});
@@ -40,5 +41,7 @@ router.post('/login', passport.authenticate('local',
   //   }
   // })
 })
+
+
 
 module.exports = router;
