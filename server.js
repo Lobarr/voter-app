@@ -4,7 +4,11 @@ const bodyParser = require('body-parser')
 const helmet = require('helmet')
 const path = require('path')
 const dotenv = require('dotenv').config()
-const db = require('./app/database/connection');
+const cookieParser = require('cookie-parser')
+const session = require('express-session')
+const db = require('./app/database/connection')
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy
 
 //port initializer 
 const port = process.env.PORT || 3000
@@ -19,7 +23,12 @@ app.use('/public', express.static(path.join(__dirname, 'public')));
 //middlewares 
 app.use(helmet())
 app.use(bodyParser.urlencoded({ extended: false }))
-// app.use()
+app.use(cookieParser());
+app.use(session({
+  secret: 'pollerAppSecret'
+}))
+app.use(passport.initialize())
+app.use(passport.session())
 
 //routes
 app.use(require('./app/routes/index'))

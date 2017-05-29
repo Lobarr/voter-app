@@ -2,14 +2,18 @@ const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const UserModel = require('../database/models/user')
 
-
+function isLoggedIn(req, res, next) {  
+  if (req.isAuthenticated())
+      return next();
+  res.redirect('/');
+}
 
 router.get('/login', (req, res) => {
   res.render('login');
 })
 
 
-router.post('/login', (req, res) => {
+router.post('/login', isLoggedIn, (req, res) => {
    UserModel.findOne({username: req.body.username}, (err, user) =>{
     if(user === null){
       res.send({

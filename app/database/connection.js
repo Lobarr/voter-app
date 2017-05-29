@@ -1,10 +1,11 @@
-const mongoose = require('mongoose').connect('mongodb://localhost/voter-app');
+const dotenv = require('dotenv').config();
+const mongoose = require('mongoose').connect(process.env.DB);
 const db = mongoose.connection;
 
 db.on('connected', ()=> {
   console.log("Connected to DB");
 }).on('error', ()=>{
-  console.log("Couldn't connect to database");
+  throw ("Couldn't connect to database");  
 }).on('disconnected', ()=>{
   console.log("Disconnected from DB");
 })
