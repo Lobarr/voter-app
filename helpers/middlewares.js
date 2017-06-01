@@ -16,11 +16,8 @@ module.exports = (app) => {
   app.use(session({
     secret: 'pollerAppSecret',
     resave: true,
-    saveUninitialized: true,
-    cookie: {secure: true}
+    saveUninitialized: true
   }))
-  app.use(passport.initialize())
-  app.use(passport.session())
   app.use(expressValidator({
     errorFormatter: function(param, msg, value) {
         var namespace = param.split('.')
@@ -37,5 +34,11 @@ module.exports = (app) => {
       };
     }
   }));
+  app.use(passport.initialize())
+  app.use(passport.session({}))
   app.use(flash())  
+  app.use((req, res, next) => {
+    res.locals.messages = require('express-messages')(req,res);
+    next();
+  })
 }

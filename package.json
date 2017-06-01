@@ -2,7 +2,7 @@
   "name": "voter-app",
   "version": "1.0.0",
   "description": "This is a polling app tha allows users create polls and show the results",
-  "main": "index.js",
+  "main": "server.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/Lobarr/voter-app"
@@ -30,6 +30,7 @@
     "dotenv": "^4.0.0",
     "ejs": "^2.5.6",
     "express": "^4.15.3",
+    "express-messages": "^1.0.1",
     "express-session": "^1.15.3",
     "express-validator": "^3.2.0",
     "helmet": "^3.6.1",

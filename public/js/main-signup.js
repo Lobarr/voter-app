@@ -3,8 +3,8 @@ $(()=>{
     event.preventDefault();
     const name = document.getElementById('name').value;
     const username = document.getElementById('username').value;
-    const password = document.getElementById('pass').value;
-    const _passconf = document.getElementById('conf-pass').value;
+    const password = document.getElementById('password').value;
+    const _passconf = document.getElementById('_password').value;
 
     if(password === _passconf){
       $.ajax({
@@ -17,18 +17,10 @@ $(()=>{
         },
         dataType: "json",
         success: (data) => {
-          if(data.message){
-            alertify.error(data.message); 
-            document.getElementById('username').value = '';
-            document.getElementById('pass').value = '';
-            document.getElementById('conf-pass').value = '';
-            document.getElementById('username').focus()
-          }else{
-            alertify.success('User Registered'); 
-            setTimeout(()=>{
-              window.location.href = '/login';
-            }, 500)   
-          }
+          console.log(data);
+        },
+        error: (err) => {
+          console.log(err);
         }
     })    
     } else {

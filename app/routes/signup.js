@@ -6,24 +6,34 @@ router.get('/signup', (req,res)=>{
 })
 
 router.post('/signup', (req, res)=>{
-  const _newUser = UserModel({
-    name: req.body.name,
-    username: req.body.username,
-    password: req.body.password
-  })
-  UserModel.createUser(_newUser, (err, user)=>{
-    console.log(err);
-    if (err !== null){
-      res.send({
-        message: "Username taken"
-      })
-    }else {
-      res.send({
-        redirect: '/login'
-      })
-    }
-    console.log(user);
-  })
+  let username = req.body.username
+  let _password = req.body._password
+
+  req.checkBody('_password', 'Password do not match').equals(req.body.password)
+
+  let errors = req.validationErrors();
+  if(errors){    
+    req.flash('error', errors[0].msg);
+    res.redirect('/signup')
+  }else{
+    const _newUser = UserModel({
+      name: req.body.name,
+      username: username,
+      password: _password
+    })  
+
+    UserModel.createUser(_newUser, (err, user)=>{
+      if(err) {        
+        req.flash('error', "Username Taken")
+        res.redirect('/signup')
+      }else {
+        req.flash('success', 'User successfully created')
+        res.redirect('/login')
+        console.log(user);
+      }      
+    })
+  }
+  
 })
 
 module.exports = router;

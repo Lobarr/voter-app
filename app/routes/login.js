@@ -1,47 +1,31 @@
 const router = require('express').Router();
-const bcrypt = require('bcryptjs');
 const passport = require('passport')
-const _helperPassport = require('../../helpers/passport-config')
+const _helperPassportConfig = require('../../helpers/passport-config')
 const UserModel = require('../database/models/user')
 
 router.get('/login', (req, res) => {
-  res.render('login', {error_msg: req.flash('error_msg')});
+  res.render('login', {
+    message: ''
+  });
 })
 
-_helperPassport(passport);
+_helperPassportConfig(passport);
 
-router.post('/login', passport.authenticate('local', 
-  { 
-    successRedirect: '/',
-    failureRedirect: '/login',
-    failureFlash: true
-  }), (req, res) => {
-  console.log('login submitted')
-  res.render('user', {user: req.body.username});
-
-
-
-  //  UserModel.findOne({username: req.body.username}, (err, user) =>{
-  //   if(user === null){
-  //     res.send({
-  //       error: "Invalid User"
-  //     })
-  //   } else {
-  //     bcrypt.compare(req.body.password, user.password, function(err, _resPass) {
-  //       if(_resPass){
-  //         res.send({
-  //           redirect: './user/'+req.body.username          
-  //         })
-  //       }else {
-  //         res.send({
-  //         error: 'Invalid password'
-  //       })
-  //       }        
-  //     });
-  //   }
-  // })
-})
-
-
+router.post('/login', (req, res, next) => {
+  passport.authenticate('local', (err, user, info) => {
+    // console.log(user)
+    console.log(info.message)
+    req.flash('error', info.message);
+    if (err) return next(err);
+    if(!user) {
+      return res.redirect('/login')
+    }
+    req.logIn(user, (err) => {
+      if(err) return next(err)
+      return res.redirect('/profile')
+    })
+  })(req, res, next);
+  
+});
 
 module.exports = router;

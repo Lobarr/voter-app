@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.10.0/css/alertify.min.css"/>
     <link href="../public/css/signup.min.css" type="text/css" rel="stylesheet">
-    <title>Form Test</title>
+    <title>Poller</title>
   </head>
   <body>
     <div class="conatiner">
@@ -45,18 +45,13 @@
     </div>
     <div class="container" id="cont">
         <h1 class="text-center" id="header">Login</h1>
-        <div class="error">
-          <% if (error_msg) { %>
-            <span id="error_msg"><%= error_msg %></span>
-          <% } %>
-        </div>
-        <span id="test" style="display: none">motherfucker</span>
-        <form method="POST" action="/login">
+        <%- messages('message-layout', locals) %>
+        <form>
           <div class="form-group">
-            <input type="text" class="form-control" id="username" placeholder="Username" required autofocus>
+            <input type="text" class="form-control" id="username" name="username" placeholder="Username" required autofocus>
           </div>
           <div class="form-group">
-            <input type="password" class="form-control" id="password" placeholder="Password" required autocomplete="off">
+            <input type="password" class="form-control" id="password"  name="password" placeholder="Password" required autocomplete="off">
           </div>
           <input class="btn btn-primary btn-block" type="submit" id="submit" value="Submit">
         </form>
@@ -67,7 +62,6 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"> </script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
     <script src="//cdn.jsdelivr.net/alertifyjs/1.10.0/alertify.min.js"></script>
-    <script type="text/javascript" src="../public/js/main-login.js"></script>
-    <!--  -->
+    <script src="../public/js/main-login.js"></script>
   </body>
 </html>

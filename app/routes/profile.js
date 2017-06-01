@@ -5,10 +5,8 @@ function isLoggedIn(req, res, next){
   res.redirect('/login');
 }
 
-router.get('/user/:username', isLoggedIn, (req, res) => {
-  res.render('user', {
-    username: req.user
-  });
+router.get('/profile', isLoggedIn, (req, res) => {
+ console.log(req.user);
 });
 
 module.exports = router;
