@@ -17,31 +17,33 @@ function validatePassword(inputPass, userPass){
 
 module.exports = (passport) => {
 
+  passport.use(new LocalStrategy(
+  function(username, password, done) {
+   UserModel.getUserByUsername(username, function(err, user){
+   	if(err) throw err;
+   	if(!user){
+   		return done(null, false, {message: 'Invalid User'});
+   	}
+
+   	UserModel.comparePassword(password, user.password, function(err, isMatch){
+   		if(err) throw err;
+   		if(isMatch){
+   			return done(null, user);
+   		} else {
+   			return done(null, false, {message: 'Invalid password'});
+   		}
+   	});
+   });
+  }));
+
   passport.serializeUser(function(user, done) {
     done(null, user.id);
   });
 
   passport.deserializeUser(function(id, done) {
-    UserModel.findById(id, function(err, user) {
+    UserModel.getUserById(id, function(err, user) {
       done(err, user);
     });
   });
-
-  passport.use('local', new LocalStrategy(   
-    (username, password, done) => {
-      UserModel.findOne({ username: username }, (err, user) => {
-        console.log(validatePassword(password, user.password))
-        if (err) throw err
-        if (!user) { 
-          return done(null, false, {message: "Invalid User"})
-        }
-        if (validatePassword(password, user.password)) {
-          return done(null, user, {message: 'Logged In'});
-        }else {          
-          return done(null, false, {message: "Invalid Password"})
-        }
-      });
-    }
-  ));
 
 }

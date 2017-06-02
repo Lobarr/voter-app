@@ -33,15 +33,20 @@ module.exports.createUser = (newUser, callback)=>{
   });
 }
 
-module.exports.validatePassword = (inputPass, userPass) => {
-  bcrypt.compare(inputPass, userPass, (err, isMatch) => {
-    if (err) throw err;
-    if(isMatch){
-      return true;
-    }else {
-      return false;
-    }
-  })
+module.exports.getUserByUsername = function(username, callback){
+	var query = {username: username};
+	UserModel.findOne(query, callback);
+}
+
+module.exports.getUserById = function(id, callback){
+	UserModel.findById(id, callback);
+}
+
+module.exports.comparePassword = function(inputPassword, hash, callback){
+	bcrypt.compare(inputPassword, hash, function(err, isMatch) {
+    	if(err) throw err;
+    	callback(null, isMatch);
+	});
 }
 
 

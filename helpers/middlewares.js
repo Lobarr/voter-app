@@ -10,14 +10,17 @@ const morgan = require('morgan')
 
 module.exports = (app) => {
   app.use(helmet())
-  app.use(morgan('dev'))
-  app.use(cookieParser());
+  app.use(morgan('dev'))  
+  app.use(bodyParser.json())
   app.use(bodyParser.urlencoded({ extended: false }))  
+  app.use(cookieParser());
   app.use(session({
     secret: 'pollerAppSecret',
     resave: true,
     saveUninitialized: true
   }))
+  app.use(passport.initialize())
+  app.use(passport.session({}))
   app.use(expressValidator({
     errorFormatter: function(param, msg, value) {
         var namespace = param.split('.')
@@ -33,9 +36,7 @@ module.exports = (app) => {
         value : value
       };
     }
-  }));
-  app.use(passport.initialize())
-  app.use(passport.session({}))
+  })); 
   app.use(flash())  
   app.use((req, res, next) => {
     res.locals.messages = require('express-messages')(req,res);

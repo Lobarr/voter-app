@@ -1,12 +1,12 @@
 const router = require('express').Router();
+const isLoggedIn = require('../../helpers/isLoggedIn')
 
-function isLoggedIn(req, res, next){
-  if(req.isAuthenticated()) return next();
-  res.redirect('/login');
-}
 
 router.get('/profile', isLoggedIn, (req, res) => {
- console.log(req.user);
+  console.log('inside profile route')
+  res.render('profile', {
+    user: req.user.username
+  })
 });
 
 module.exports = router;

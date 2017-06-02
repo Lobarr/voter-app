@@ -26,15 +26,27 @@
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
-                    <li>
-                        <a class="page-scroll nav-list" href="/signup">Sign up</a>
-                    </li>
-                    <li>
-                      <a class="page-scroll nav-list" href="/login">Login</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll nav-list" href="#portfolio">Polls</a>
-                    </li>
+                    <% if (user) { %>
+                      <li>
+                        <a class="page-scroll nav-list" href="/logout">Logout</a>
+                      </li>
+                      <li>
+                          <a class="page-scroll nav-list" href="#portfolio">Polls</a>
+                      </li>
+                      <li>
+                          <a class="page-scroll nav-list" href="/profile"><%= username %></a>
+                      </li>
+                    <% }else { %>
+                      <li>
+                          <a class="page-scroll nav-list" href="/signup">Sign up</a>
+                      </li>
+                      <li>
+                        <a class="page-scroll nav-list" href="/login">Login</a>
+                      </li>
+                      <li>
+                          <a class="page-scroll nav-list" href="#portfolio">Polls</a>
+                      </li>
+                    <% } %>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

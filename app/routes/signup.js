@@ -13,7 +13,7 @@ router.post('/signup', (req, res)=>{
 
   let errors = req.validationErrors();
   if(errors){    
-    req.flash('error', errors[0].msg);
+    req.flash('danger', errors[0].msg);
     res.redirect('/signup')
   }else{
     const _newUser = UserModel({
@@ -24,7 +24,7 @@ router.post('/signup', (req, res)=>{
 
     UserModel.createUser(_newUser, (err, user)=>{
       if(err) {        
-        req.flash('error', "Username Taken")
+        req.flash('danger', "Username Taken")
         res.redirect('/signup')
       }else {
         req.flash('success', 'User successfully created')
