@@ -2,7 +2,6 @@
   // border: 1px solid black;
 }
 
-
 #profile-body { 
   margin-top: 5em;
   #left {
@@ -10,19 +9,28 @@
       margin-top: 10px;
     }
     font-size: 1.2em;
-    // padding: 2em;
     float: left;
     width: 30%;
   }
-  #right {
-      #posts {
-        #no-post {
-        text-align: center;
-        font-size: 1em;
-      }
+  #right { 
+    .panel-heading {
+      font-weight: 700;
+      text-transform: uppercase;
     }
-    
-    // padding: 2em;
+    .progress {
+      .progress-type {
+        float: left;
+        text-transform: uppercase;
+        font-weight: 500;
+        padding-left: 0.5em;
+        color: rgb(255, 255, 255);
+      } 
+      .progress-completed {
+        float: right;
+        font-weight: 800;
+        padding: 3px 10px 2px;
+      }  
+    }
     float: right;
     width: 70%;
   }

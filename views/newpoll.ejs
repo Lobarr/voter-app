@@ -39,8 +39,18 @@
     </nav>
 
     <section id="newpoll-body">
-        <div class="container">
-            <h1>Testing</h1>
+        <div class="container" id="cont">
+            <h1 class="text-center" id="header">New Poll</h1>
+            <form method="post" action="/newpoll">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="title" placeholder="Title" required autofocus>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="options" placeholder="Options" required>
+                    <label for="options" id="options-label">Seperate multiple options by spaces</label>
+                </div>
+                <input class="btn btn-primary btn-block" type="submit" id="submit" value="Submit">
+            </form>
         </div>
     </section>
 

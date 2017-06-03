@@ -13,15 +13,13 @@ const pollSchema = mongoose.Schema({
     options: {
       type: Array,
       required: true
+    }, 
+    votes: {
+      type: Number,
+      required: true
     }
   }
 })
-
-
-// let option = [
-//   ['cheese', 2], 
-//   ['frutes', 4]
-// ]
 
 const PollModel = mongoose.model('Poll', pollSchema);
 
@@ -29,4 +27,24 @@ module.exports = PollModel;
 
 module.exports.createPoll = (newPoll, callback) => {
   newPoll.save(callback);
+}
+
+module.exports.getUserPolls = (username, callback) => {
+  const query = {username: username}
+  PollModel.find(query, callback);
+}
+
+module.exports.editPoll = (id, callback) => {
+  const query = {id: id}
+  PollModel.findByIdAndUpdate(query, callback);
+}
+
+module.exports.viewPoll = (id, callback) => {
+  const query = {id: id}
+  PollModel.findById(query, callback);
+}
+
+module.exports.deletePoll = (id, callback) => {
+  const query = {_id: mongoose.Types.ObjectId(id)}
+  PollModel.findByIdAndRemove(query, callback);
 }
