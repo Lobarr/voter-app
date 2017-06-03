@@ -25,6 +25,7 @@ app.use(require('./app/routes/signup'))
 app.use(require('./app/routes/login'))
 app.use(require('./app/routes/logout'))
 app.use(require('./app/routes/profile'))
+app.use(require('./app/routes/newpoll'))
 
 
 app.listen(port, ()=>{

@@ -11,13 +11,26 @@ router.get('/login', (req, res) => {
 
 _helperPassportConfig(passport);
 
-router.post('/login',
- passport.authenticate('local', {
-   successRedirect: '/profile', 
-   failureRedirect:'/login', 
-   failureFlash: true
-  }), (req, res) => {
-    res.redirect('/')   
-});
+router.post('/login', (req, res, next) => {
+  passport.authenticate('local', (err, user, info) => {
+    if (err) {
+      console.log(err);
+      throw err;
+    }
+    if (!user) {
+      req.flash('danger', info.message)
+      res.redirect('/login')
+    }else {
+      req.logIn(user, (err) => {
+        if(err){
+          console.log(err);
+          throw err;
+        }else {
+          res.redirect('/profile')
+        }        
+      })
+    }
+  })(req, res, next)
+})
 
 module.exports = router;

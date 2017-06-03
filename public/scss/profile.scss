@@ -1,1 +1,29 @@
+* {
+  // border: 1px solid black;
+}
 
+
+#profile-body { 
+  margin-top: 5em;
+  #left {
+    #buttons {
+      margin-top: 10px;
+    }
+    font-size: 1.2em;
+    // padding: 2em;
+    float: left;
+    width: 30%;
+  }
+  #right {
+      #posts {
+        #no-post {
+        text-align: center;
+        font-size: 1em;
+      }
+    }
+    
+    // padding: 2em;
+    float: right;
+    width: 70%;
+  }
+}

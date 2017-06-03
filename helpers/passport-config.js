@@ -2,19 +2,6 @@ const LocalStrategy = require('passport-local').Strategy
 const bcrypt = require('bcryptjs')
 const UserModel = require('../app/database/models/user')
 
-function validatePassword(inputPass, userPass){
-  bcrypt.compare(inputPass, userPass, (err, isMatch) => {
-    if (err) throw err;
-    if(isMatch){
-      return true;
-    }else {
-      return false;
-    }
-  })
-}
-
-
-
 module.exports = (passport) => {
 
   passport.use(new LocalStrategy(
