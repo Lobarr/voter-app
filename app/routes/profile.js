@@ -11,7 +11,6 @@ router.get('/profile', isLoggedIn, (req, res) => {
       user: req.user.username,
       name: req.user.name,
       polls: polls, 
-
     })
   })  
 });

@@ -13,6 +13,23 @@
       }
     }
   }
+  #polls {
+    margin-top: 2em;
+    .well {
+      padding: 0.5em;
+    }
+   .poll-title {
+      text-decoration: none;
+      font-size: 1.2em;      
+      color: black;  
+      &:hover {
+        color: rgb(166,128,140);
+      }    
+    }
+    .poll-username {
+      font-size: 1em;
+    }
+  }
 }//laptop
 
 @media only screen and (min-width : 320px) and (max-width : 480px){

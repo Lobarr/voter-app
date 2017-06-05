@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Poller</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../public/css/index.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.10.0/css/alertify.min.css"/>
+    <link href="../public/css/viewpoll.min.css" type="text/css" rel="stylesheet">
+    <title>Poller</title>
   </head>
   <body>
     <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
@@ -53,28 +53,37 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
-
-    <div class="container-fluid header" >
-      <div class="container">
-        <header>
-          <div class="header-children">
-            <h1>Poller</h1>
-            <p>This is an app that allows user to make polls (freecodecamp)</p>
-          </div>
-        </header>        
-      </div>
-    </div>
-    <div class="container" id="polls">
-     <% polls.map(poll => { %>
-        <div class="well">
-          <div class="mashup">
-            <a class="poll-title" href="/poll/<%= poll._id %>"><%= poll.poll.title %></a>
-            <h4 class="text-right poll-username">- <%= poll.username %></h4>
-          </div>
+    <section id="viewpoll-body">
+        <div class="container" id="cont">             
+            <div id="left">
+              <h2 id="header"><%= poll.poll.title %></h2>
+              <form method="post" action="/vote/<%= poll._id %>">
+                <div class="form-group">
+                <label id="vote-label" for="_vote">Options</label> <br/>
+                  <select name="_vote">
+                    <optgroup label="Options">
+                      <% poll.poll.options.map((option, index)=> { %>
+                        <option name="<%= option[0] %>" value="<%= index %>"><%= option[0] %></option>
+                      <% }) %>
+                    </optgroup>                  
+                  </select>                  
+                </div>
+                <input class="btn btn-danger" type="submit" id="submit" value="Vote">
+              </form>
+            </div>               
+            <div id="right">
+              <div class="well well-lg">
+                <%- messages('message-layout', locals) %>
+                test
+              </div>  
+            </div>                   
         </div>
-      <% }) %>
-    </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    </section>
+
+    <!-- JS files -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"> </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+    <!--  -->
   </body>
 </html>

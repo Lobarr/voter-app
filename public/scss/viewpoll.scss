@@ -1,0 +1,24 @@
+#viewpoll-body {
+  margin-top: 5em;
+  #cont {    
+    #header {
+      color: rgb(166,128,140);
+    }
+    #left {
+      float: left;
+      width: 20%;
+      #vote-label {
+        color: rgba(128,128,128, 0.5);
+      }
+      select {
+        padding: 0.3em;
+        border-radius: 5px;
+        border: 1px solid  rgb(166,128,140);              
+      }
+    }
+    #right {
+      float: right;
+      width: 80%;
+    }
+  }  
+}

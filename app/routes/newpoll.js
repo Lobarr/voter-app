@@ -19,16 +19,21 @@ router.post('/newpoll', (req, res) => {
     username: req.user.username,
     poll: {
       title: req.body.title,
-      options: optionsArr
-    },
-    votes: 0
+      options: optionsArr,
+      votes: 0
+    }    
   })  
 
   PollModel.createPoll(newPoll, (err, poll) => {
-    if(err) throw err
-    console.log(poll);
-    req.flash('success', 'Poll created!')
-    res.redirect('/profile')
+    if(err) {
+      req.flash('danger', 'Error creating poll, please try again')
+      res.redirect('/profile')
+      console.log(err);
+    } else {
+      console.log(poll);
+      req.flash('success', 'Poll created!')
+      res.redirect('/profile')
+    }    
   })  
 })
 

@@ -29,6 +29,7 @@ app.use(require('./app/routes/newpoll'))
 app.use(require('./app//routes/editpoll'))
 app.use(require('./app/routes/viewpoll'))
 app.use(require('./app/routes//deletepoll'))
+app.use(require('./app/routes/vote'))
 
 
 app.listen(port, ()=>{

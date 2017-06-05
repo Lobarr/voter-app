@@ -6,23 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.10.0/css/alertify.min.css"/>
-    <link href="../public/css/newpoll.min.css" type="text/css" rel="stylesheet">
+    <link href="../public/css/editpoll.min.css" type="text/css" rel="stylesheet">
     <title>Poller</title>
   </head>
   <body>
     <%- include('nav-layout') -%>
-
-    <section id="newpoll-body">
+    <section id="editpoll-body">
         <div class="container" id="cont">
-            <h1 class="text-center" id="header">New Poll</h1>
-            <form method="post" action="/newpoll">
+            <h1 class="text-center" id="header">Edit Poll</h1>
+            <form method="post" action="/edit/<%= id %>">
                 <div class="form-group">
-                    <input type="text" class="form-control" name="title" placeholder="Title" required autofocus>
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" name="options" placeholder="Options" required>
-                    <label for="options" id="options-label">Seperate multiple options by spaces</label>
-                </div>
+                    <div class="alert alert-info" role="alert">At this point, only the title can be edited</div>
+                    <input type="text" class="form-control" name="title" placeholder="Title">
+                    <label for="title" id="options-label">Current Title: <%= title %></label>                    
+                </div>              
                 <input class="btn btn-primary btn-block" type="submit" id="submit" value="Submit">
             </form>
         </div>
