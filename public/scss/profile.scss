@@ -2,7 +2,7 @@
   // border: 1px solid black;
 }
 
-#profile-body { 
+#profile-body {
   margin-top: 5em;
   #left {
     #buttons {
@@ -12,24 +12,23 @@
     float: left;
     width: 30%;
   }
-  #right { 
+  #right {
     .panel-heading {
       font-weight: 700;
       text-transform: uppercase;
     }
     .progress {
-      .progress-type {
-        float: left;
-        text-transform: uppercase;
-        font-weight: 500;
-        padding-left: 0.5em;
-        color: rgb(255, 255, 255);
-      } 
+      margin-bottom: 0;
       .progress-completed {
         float: right;
         font-weight: 800;
         padding: 3px 10px 2px;
-      }  
+      }
+    }
+    .progress-type {
+      text-transform: uppercase;
+      font-weight: 500;
+      color: rgba(128,128,128, 0.5);
     }
     float: right;
     width: 70%;
