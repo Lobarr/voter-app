@@ -11,7 +11,7 @@ const pollSchema = mongoose.Schema({
       required: true
     }, 
     options: {
-      type: Array,
+      type: Object,
       required: true
     }, 
     votes: {
@@ -44,10 +44,10 @@ module.exports.editPoll = (id, title, callback) => {
 
 module.exports.vote = (id, _vote, callback) => {
   const query = {_id: mongoose.Types.ObjectId(id)}
-  // const vote = `poll.options[${parseInt(_vote)}][1]`  
+  const vote = "poll.options."+_vote
   const update = {
     $inc: {
-    ['poll.options['+_vote+'][1]']: 1, 
+    "poll.options[`${_vote}`]": 1, 
     "poll.votes": 1
     }
   }

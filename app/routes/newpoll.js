@@ -11,15 +11,16 @@ router.get('/newpoll', isLoggedIn, (req, res) => {
 //split option by spaces
 router.post('/newpoll', (req, res) => {
   let temp = req.body.options.split(' ')
-  let optionsArr = temp.map(val => {
-    return [val, 0]
+  let optionsObj = {}
+  temp.map(val => {
+    return optionsObj[`${val}`] = 0;
   })  
   
   const newPoll = new PollModel({
     username: req.user.username,
     poll: {
       title: req.body.title,
-      options: optionsArr,
+      options: optionsObj,
       votes: 0
     }    
   })  

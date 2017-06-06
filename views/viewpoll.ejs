@@ -54,7 +54,7 @@
         <!-- /.container-fluid -->
     </nav>
     <section id="viewpoll-body">
-        <div class="container" id="cont">             
+        <div class="container" id="cont">
             <div id="left">
               <h2 id="header"><%= poll.poll.title %></h2>
               <form method="post" action="/vote/<%= poll._id %>">
@@ -62,21 +62,21 @@
                 <label id="vote-label" for="_vote">Options</label> <br/>
                   <select name="_vote">
                     <optgroup label="Options">
-                      <% poll.poll.options.map((option, index)=> { %>
-                        <option name="<%= option[0] %>" value="<%= index %>"><%= option[0] %></option>
-                      <% }) %>
-                    </optgroup>                  
-                  </select>                  
+                      <% for(let opt in poll.poll.options) { %>
+                        <option name="<%= opt %>" value="<%= opt %>"><%= opt %></option>
+                      <% } %>
+                    </optgroup>
+                  </select>
                 </div>
                 <input class="btn btn-danger" type="submit" id="submit" value="Vote">
               </form>
-            </div>               
+            </div>
             <div id="right">
               <div class="well well-lg">
                 <%- messages('message-layout', locals) %>
                 test
-              </div>  
-            </div>                   
+              </div>
+            </div>
         </div>
     </section>
 

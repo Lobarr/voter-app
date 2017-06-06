@@ -35,15 +35,15 @@
                         <div class="panel panel-default">
                             <div class="panel-heading"><%= poll.poll.title %></div>
                             <div class="panel-body">
-                                <% poll.poll.options.map(option => { %>
+                                <% for(let opt in poll.poll.options) { %>
                                     <div class="progress">
-                                        <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="<%= ((option[1]/poll.poll.votes)*100).toFixed(2) %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= ((option[1]/poll.poll.votes)*100).toFixed(2) %>%;">
-                                            <span class="sr-only">60% Complete</span>
+                                        <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="<%= ((poll.poll.options[opt]/poll.poll.votes)*100).toFixed(2) %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= ((poll.poll.options[opt]/poll.poll.votes)*100).toFixed(2) %>%;">
+                                            <span class="sr-only"><%= ((poll.poll.options[opt]/poll.poll.votes)*100).toFixed(2) %>% Complete</span>
                                         </div>
-                                        <span class="progress-completed"><%= ((option[1]/poll.poll.votes)*100).toFixed(2) %>%</span>
+                                        <span class="progress-completed"><%= ((poll.poll.options[opt]/poll.poll.votes)*100).toFixed(2) %>%</span>
                                     </div>
-                                    <span class="progress-type"><%= option[0] %></span>
-                                <% }) %>
+                                    <span class="progress-type"><%= opt %></span>
+                                <% } %>
                             </div>
                         </div>
                         <a href="/poll/<%= poll._id %>"><button class="btn btn-primary">View Poll</button></a>
@@ -55,7 +55,7 @@
                 <div class="well well-lg" id="posts">
                     <span class="text-center" id="no-post">No posts...</span>
                 </div>
-               <% } %>
+             <% } %>
            </section>
          </div>
     </section>
