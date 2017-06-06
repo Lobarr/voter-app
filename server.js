@@ -30,7 +30,7 @@ app.use(require('./app//routes/editpoll'))
 app.use(require('./app/routes/viewpoll'))
 app.use(require('./app/routes//deletepoll'))
 app.use(require('./app/routes/vote'))
-
+app.use(require('./app/routes/api'))
 
 app.listen(port, ()=>{
   console.log(`Server running on port ${port}...`)

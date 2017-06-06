@@ -31,7 +31,7 @@
                         <a class="page-scroll nav-list" href="/logout">Logout</a>
                       </li>
                       <li>
-                          <a class="page-scroll nav-list" href="#portfolio">Polls</a>
+                          <a class="page-scroll nav-list" href="/#polls">Polls</a>
                       </li>
                       <li>
                           <a class="page-scroll nav-list" href="/profile"><%= username %></a>
@@ -44,7 +44,7 @@
                         <a class="page-scroll nav-list" href="/login">Login</a>
                       </li>
                       <li>
-                          <a class="page-scroll nav-list" href="#portfolio">Polls</a>
+                          <a class="page-scroll nav-list" href="/#polls">Polls</a>
                       </li>
                     <% } %>
                 </ul>
@@ -65,6 +65,7 @@
       </div>
     </div>
     <div class="container" id="polls">
+      <a href="#poll"></a>
      <% polls.map(poll => { %>
         <div class="well">
           <div class="mashup">

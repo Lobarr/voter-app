@@ -29,7 +29,6 @@ router.post('/signup', (req, res)=>{
       }else {
         req.flash('success', 'User successfully created')
         res.redirect('/login')
-        console.log(user);
       }      
     })
   }

@@ -19,16 +19,19 @@
     }
     .progress {
       margin-bottom: 0;
+    }
+    #poll-result {
+      margin-bottom: 0.8em;
       .progress-completed {
         float: right;
-        font-weight: 800;
-        padding: 3px 10px 2px;
+        font-weight: 500;
+        color: rgba(128,128,128, 0.5);
       }
-    }
-    .progress-type {
-      text-transform: uppercase;
-      font-weight: 500;
-      color: rgba(128,128,128, 0.5);
+      .progress-type {
+        text-transform: uppercase;
+        font-weight: 500;
+        color: rgba(128,128,128, 0.5);
+      }
     }
     float: right;
     width: 70%;

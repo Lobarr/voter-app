@@ -10,7 +10,7 @@ const morgan = require('morgan')
 
 module.exports = (app) => {
   app.use(helmet())
-  app.use(morgan('dev'))  
+  app.use(morgan('common'))  
   app.use(bodyParser.json())
   app.use(bodyParser.urlencoded({ extended: false }))  
   app.use(cookieParser());

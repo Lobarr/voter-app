@@ -27,11 +27,9 @@ router.post('/newpoll', (req, res) => {
 
   PollModel.createPoll(newPoll, (err, poll) => {
     if(err) {
-      req.flash('danger', 'Error creating poll, please try again')
+      req.flash('danger', 'Error creating poll, please try again (Options can\'t contain symbols) ')
       res.redirect('/profile')
-      console.log(err);
     } else {
-      console.log(poll);
       req.flash('success', 'Poll created!')
       res.redirect('/profile')
     }    

@@ -40,14 +40,12 @@ module.exports.editPoll = (id, title, callback) => {
   PollModel.findByIdAndUpdate(query, update, {new: true}, callback);
 }
 
-// options : { ‘dog': 0, 'cat': 3, 'snake': 1 }
-
 module.exports.vote = (id, _vote, callback) => {
   const query = {_id: mongoose.Types.ObjectId(id)}
   const vote = "poll.options."+_vote
   const update = {
     $inc: {
-    "poll.options[`${_vote}`]": 1, 
+    [vote]: 1, 
     "poll.votes": 1
     }
   }
@@ -65,6 +63,6 @@ module.exports.deletePoll = (id, callback) => {
 }
 
 module.exports.getAllPolls = (callback) => {
-  PollModel.find({}, callback);
+  PollModel.find({}, callback).sort({"poll.votes": 1});
 }
 
