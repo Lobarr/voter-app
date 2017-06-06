@@ -22,15 +22,17 @@ router.post('/signup', (req, res)=>{
       password: _password
     })  
 
-    UserModel.createUser(_newUser, (err, user)=>{
-      if(err) {        
-        req.flash('danger', "Username Taken")
-        res.redirect('/signup')
-      }else {
-        req.flash('success', 'User successfully created')
-        res.redirect('/login')
-      }      
-    })
+    const user = new Promise((resolve, reject)=> {
+      UserModel.createUser(_newUser, (err, user)=>{
+        (err) ? reject(err) : resolve(user)
+      })
+    }).then(user => {
+      req.flash('success', 'User successfully created')
+      res.redirect('/login')
+    }).catch(err => {
+      req.flash('danger', "Username Taken")
+      res.redirect('/signup')
+    })    
   }
   
 })

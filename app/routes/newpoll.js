@@ -24,16 +24,17 @@ router.post('/newpoll', (req, res) => {
       votes: 0
     }    
   })  
-
-  PollModel.createPoll(newPoll, (err, poll) => {
-    if(err) {
-      req.flash('danger', 'Error creating poll, please try again (Options can\'t contain symbols) ')
-      res.redirect('/profile')
-    } else {
-      req.flash('success', 'Poll created!')
-      res.redirect('/profile')
-    }    
-  })  
+  const poll = new Promise((resolve, reject)=>{
+    PollModel.createPoll(newPoll, (err, poll) => {
+      (err) ? reject(err) : resolve(poll)
+    })
+  }).then(poll => {
+    req.flash('success', 'Poll created!')
+    res.redirect('/profile')
+  }).catch(err => {
+    req.flash('danger', 'Error creating poll, please try again (Options can\'t contain symbols) ')
+    res.redirect('/profile')
+  }) 
 })
 
 module.exports = router;

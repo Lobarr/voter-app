@@ -37,12 +37,12 @@
                                 <% for(let opt in poll.poll.options) { %>
                                     <div class="progress">
                                         <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="<%= ((poll.poll.options[opt]/poll.poll.votes)*100).toFixed(1) %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= ((poll.poll.options[opt]/poll.poll.votes)*100).toFixed(1) %>%;">
-                                            <span class="sr-only"><%= ((poll.poll.options[opt]/poll.poll.votes)*100).toFixed(1) %>% Complete</span>
+                                            <span class="sr-only"><%= poll.poll.options[opt] %> vote(s)</span>
                                         </div>
                                     </div>
                                     <div id="poll-result">
                                       <span class="progress-type"><%= opt %></span>
-                                      <span class="progress-completed"><%= ((poll.poll.options[opt]/poll.poll.votes)*100).toFixed(1) %>%</span>
+                                      <span class="progress-completed"><%= poll.poll.options[opt] %> vote(s)</span>
                                     </div>
                                 <% } %>
                             </div>
@@ -60,6 +60,7 @@
            </section>
          </div>
     </section>
+
 
     <!-- JS files -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>

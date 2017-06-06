@@ -30,6 +30,13 @@
       font-size: 1em;
     }
   }
+  #footer{
+    margin-top: 8em;
+    padding: 1em;
+    background-color: rgb(166,128,140);
+    color: white;
+    font-size: 0.8em;
+  }
 }//laptop
 
 @media only screen and (min-width : 320px) and (max-width : 480px){

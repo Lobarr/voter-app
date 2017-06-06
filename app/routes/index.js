@@ -4,21 +4,29 @@ const PollModel = require('../database/models/polls')
 function isLoggedIn(req, res, next){
   if(req.isAuthenticated())
   {
-    PollModel.getAllPolls((err, polls) => {
+    const polls = new Promise((resolve, reject) => {
+      PollModel.getAllPolls((err, polls) => {
+        (err) ? reject(err) : resolve(polls)
+      })      
+    }).then(polls => {
       res.render('index', {
         user: true,
         username: req.user.username,
         polls: polls 
       })
-    })      
+    })    
   }else {
-    PollModel.getAllPolls((err, polls) => {
+    const polls = new Promise((resolve, reject) => {
+      PollModel.getAllPolls((err, polls) => {
+        (err) ? reject(err) : resolve(polls)
+      })      
+    }).then(polls => {
       res.render('index', {
         user: false,
         username: '',
         polls: polls
       })
-    })       
+    })           
   }   
 }
 
