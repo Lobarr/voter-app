@@ -2320,15 +2320,15 @@ mongodb@2.2.27:
     readable-stream "2.2.7"
 
 mongoose@^4.10.3:
-  version "4.10.4"
-  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-4.10.4.tgz#b9a0a033725e5c29efd9eefb4687d1371956c7b6"
+  version "4.10.5"
+  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-4.10.5.tgz#7cd50ee38d5057815e83962e3985f7dd9da769ad"
   dependencies:
     async "2.1.4"
     bson "~1.0.4"
     hooks-fixed "2.0.0"
     kareem "1.4.1"
     mongodb "2.2.27"
-    mpath "0.2.1"
+    mpath "0.3.0"
     mpromise "0.5.5"
     mquery "2.3.1"
     ms "2.0.0"
@@ -2346,9 +2346,9 @@ morgan@^1.8.2:
     on-finished "~2.3.0"
     on-headers "~1.0.1"
 
-mpath@0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/mpath/-/mpath-0.2.1.tgz#3a4e829359801de96309c27a6b2e102e89f9e96e"
+mpath@0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/mpath/-/mpath-0.3.0.tgz#7a58f789e9b5fd3c94520634157960f26bd5ef44"
 
 mpromise@0.5.5:
   version "0.5.5"
