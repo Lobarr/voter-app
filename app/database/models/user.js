@@ -36,7 +36,7 @@ module.exports.getUserByUsername = (username, callback) => {
 }
 
 module.exports.getUserById = (id, callback) => {
-	UserModel.findById(id, callback);
+	UserModel.findById(id, callback);  
 }
 
 module.exports.comparePassword = (inputPassword, hash, callback) => {

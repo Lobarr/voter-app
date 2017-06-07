@@ -6,7 +6,7 @@ router.post('/vote/:id', (req, res) => {
     PollModel.vote(req.params.id, req.body._vote, (err, poll) => {
       (err) ? reject(err) : resolve(poll)
     })  
-  }).then(poll => {
+  }).then(poll => {  
     res.redirect('/poll/'+req._parsedOriginalUrl.pathname.substr(6, req._parsedOriginalUrl.pathname.length))
   }).catch(err => {
     throw err;
