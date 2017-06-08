@@ -1,9 +1,36 @@
 # Voter-app
-This is a web application that allows users create polls and check the results. 
+This is a web application that allows users create polls and check the results. This application was inspired buy a freecodecamp challenge. [Check it out](https://poller-vote.herokuapp.com/)
 
-## Setup
-```
-yarn/npm install
-add a .env file and set DB to mongodb url
-gulp //might throw an error if database isn't setup
-```
+## Tools/Frameworks Used
+#### Backend
+* Node.js
+* Express
+
+#### Authentication / Security 
+* Passport.js
+* Bcrypt.js
+* Express session
+* Helmet
+
+#### Test Driven Development
+* Mocha
+* Chai
+
+#### Database
+* MongoDB
+* Mongoose (ORM)
+
+#### Logging
+* Morgan
+
+#### Frontend
+* EJS
+* SCSS
+* jQuery
+* Alertify
+* Chart.js
+
+#### Dev Workflow
+* Gulp
+* Nodemon
+* Browser sync
