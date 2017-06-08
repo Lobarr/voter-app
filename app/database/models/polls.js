@@ -17,6 +17,9 @@ const pollSchema = mongoose.Schema({
     votes: {
       type: Number,
       required: true
+    },
+    voters: {
+      type: Array
     }
   }
 })
@@ -40,16 +43,19 @@ module.exports.editPoll = (id, title, callback) => {
   PollModel.findByIdAndUpdate(query, update, {new: true}, callback);
 }
 
-module.exports.vote = (id, _vote, callback) => {
+module.exports.vote = (id, _vote, ip, callback) => {
   const query = {_id: mongoose.Types.ObjectId(id)}
   const vote = "poll.options."+_vote
   const update = {
     $inc: {
-    [vote]: 1, 
-    "poll.votes": 1
+      [vote]: 1, 
+      "poll.votes": 1
+    }, 
+    $push: {
+      "poll.voters": ip
     }
   }
-  PollModel.findByIdAndUpdate(query, update, {new: true}, callback);
+  PollModel.findByIdAndUpdate(query, update, {safe: true, upsert: true, new: true}, callback);
 }
 
 module.exports.viewPoll = (id, callback) => {

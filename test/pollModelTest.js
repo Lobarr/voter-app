@@ -87,13 +87,14 @@ describe('PollModel logic', ()=>{
         let curVoteCount = poll.poll.options[vote]
         let curTotalVotes = poll.poll.votes
         const votepoll = new Promise((resolve, reject)=>{
-          PollModel.vote(poll._id, vote, (err, poll) => {
+          PollModel.vote(poll._id, vote, 'testuser', (err, poll) => {
             (err) ? reject(err) : resolve(poll)
           })
         }).then(poll =>{         
           const option = "poll.poll.options."+vote 
           assert.equal([option], curVoteCount++, 'vote matches')
           assert.equal(poll.poll.votes, curTotalVotes++, 'total votes matches')
+          assert.isAbove(poll.poll.voters.indexOf(username), -1, 'username pushed into voters')
         }).catch(err => {
           assert.isOk(false, 'threw and error in votePoll')
         })

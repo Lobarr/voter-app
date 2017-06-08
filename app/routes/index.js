@@ -26,6 +26,7 @@ function isLoggedIn(req, res, next){
         username: '',
         polls: polls
       })
+      console.log(req._remoteAddress)
     })           
   }   
 }

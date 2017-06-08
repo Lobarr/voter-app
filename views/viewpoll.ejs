@@ -73,6 +73,7 @@
             </div>
             <div id="right">
               <div class="well well-lg">
+                <%- messages('message-layout', locals) %>
                 <span id="poll-id" style="display: none"><%= poll._id %></span>
                 <canvas id="doughnut-chart" width="800" height="550"></canvas>
               </div>

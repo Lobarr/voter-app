@@ -26,7 +26,7 @@ router.post('/login', (req, res, next) => {
           console.log(err);
           throw err;
         }else {
-          res.redirect('/profile')
+          res.redirect('/')
         }        
       })
     }
