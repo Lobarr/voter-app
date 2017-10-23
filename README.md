@@ -12,7 +12,7 @@ This is a web application that allows users create polls and check the results. 
 * Express session
 * Helmet
 
-#### Test Driven Development
+#### Unit Tests
 * Mocha
 * Chai
 
